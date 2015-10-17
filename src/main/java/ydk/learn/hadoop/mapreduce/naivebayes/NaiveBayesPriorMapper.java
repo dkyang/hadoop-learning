@@ -10,6 +10,7 @@ import java.io.IOException;
 /**
  * Created by yangdekun on 2015/10/17.
  */
+// 按类别count
 public class NaiveBayesPriorMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     private static final IntWritable oneInt = new IntWritable(1);

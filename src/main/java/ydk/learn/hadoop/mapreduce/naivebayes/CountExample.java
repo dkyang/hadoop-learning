@@ -10,6 +10,7 @@ import org.apache.hadoop.mapreduce.JobPriority;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+import ydk.learn.hadoop.mapreduce.Constants;
 
 /**
  * Created by yangdekun on 2015/10/17.
@@ -28,7 +29,7 @@ public class CountExample {
         String inputPath = otherArgs[1];
         String outputPath = otherArgs[2];
 
-        String jobName = "naive bayes count example";
+        String jobName = Constants.COUNT_EXAMPLE_JOB_NAME;
         Job job = Job.getInstance(configuration, jobName);
         job.setJarByClass(CountExample.class);
         job.setMapperClass(CountExampleMapper.class);

@@ -10,6 +10,7 @@ import org.apache.hadoop.mapreduce.OutputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
+import ydk.learn.hadoop.mapreduce.Constants;
 
 import java.io.IOException;
 
@@ -33,7 +34,7 @@ public class WordCount {
         String inputPath = otherArgs[1];
         String outputPath = otherArgs[2];
 
-        String jobName = "word count";
+        String jobName = Constants.WORD_COUNT_JOB_NAME;
         Job job = Job.getInstance(configuration, jobName);
         job.setJarByClass(WordCount.class);
         job.setMapperClass(WordCountMapper.class);

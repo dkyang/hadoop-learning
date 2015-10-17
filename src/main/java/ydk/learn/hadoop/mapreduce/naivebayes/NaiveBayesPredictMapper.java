@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
  */
 // the format of input file is:
 // sku_id'\t'title
-// use distributedCache to transfer prior and likelihood file
+// use distributedCache to send prior and likelihood file
 public class NaiveBayesPredictMapper extends Mapper<LongWritable, Text, Text, Text> {
 
     private final Map<String, Integer> likelihoodMap = new HashMap<String, Integer>();
@@ -67,6 +67,8 @@ public class NaiveBayesPredictMapper extends Mapper<LongWritable, Text, Text, Te
         ArrayList<String> tokens = getTokens(title);
 
         for (String label : labelArray) {
+            int prior = priorMap.get(label);
+
 
         }
     }

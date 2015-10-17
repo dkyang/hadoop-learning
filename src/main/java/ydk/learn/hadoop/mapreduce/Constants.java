@@ -10,4 +10,6 @@ public class Constants {
     // naive bayes
     public static final String COUNT_EXAMPLE_JOB_NAME = "naive bayes count example";
     public static final String COUNT_EXAMPLE_FILE_NAME = "count example file name";
+
+    public static final String NAIVE_BAYES_PRIOR_JOB_NAME = "naive bayes prior";
 }

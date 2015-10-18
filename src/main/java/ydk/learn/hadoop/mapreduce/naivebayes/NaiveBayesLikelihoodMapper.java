@@ -4,6 +4,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import ydk.learn.hadoop.mapreduce.Constants;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -28,7 +29,7 @@ public class NaiveBayesLikelihoodMapper extends Mapper<LongWritable, Text, Text,
         StringTokenizer tokenizer = new StringTokenizer(line.substring(pos+1)); // is it right?
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            String outputKey = label + "_" + token;
+            String outputKey = label + Constants.KEY_CONNECT_CHAR + token;
             resuableText.set(outputKey);
             context.write(resuableText, oneInt);
         }

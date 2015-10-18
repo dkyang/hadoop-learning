@@ -16,4 +16,8 @@ public class Constants {
     public static final String NAIVE_BAYES_LIKELIHOOD_JOB_NAME = "naive bayes likelihood";
 
     public static final String COUNT_WORD_BY_CLASS_JOB_NAME = "count word by class";
+    public static final String COUNT_WORD_BY_CLASS_FILE_NAME = "count word by class file";
+
+    public static final String KEY_CONNECT_CHAR = "_";
+
 }

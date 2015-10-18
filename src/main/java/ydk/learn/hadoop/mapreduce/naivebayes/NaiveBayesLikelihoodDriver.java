@@ -20,6 +20,9 @@ public class NaiveBayesLikelihoodDriver {
 
         String inputPath = args[1];
         String outputPath = args[2];
+        String countWordByClassFileName = args[3]; // distributedCache?
+
+        configuration.set(Constants.COUNT_WORD_BY_CLASS_FILE_NAME, countWordByClassFileName);
 
         String jobName = Constants.NAIVE_BAYES_LIKELIHOOD_JOB_NAME;
         Job job = Job.getInstance(configuration, jobName);

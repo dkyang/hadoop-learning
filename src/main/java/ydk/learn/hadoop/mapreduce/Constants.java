@@ -20,4 +20,12 @@ public class Constants {
 
     public static final String KEY_CONNECT_CHAR = "_";
 
+    // 可能的label取值
+    public static final String[] LABEL_ARRAY = {"0", "1", "2"};
+
+    public static final String LIKELIHOOD_FILE_NAME = "likelihood file";
+    public static final String PRIOR_FILE_NAME = "prior file";
+
+    public static final String NAIVE_BAYES_PREDICT_JOB_NAME = "naive bayes predict";
+
 }

@@ -5,6 +5,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import ydk.learn.hadoop.mapreduce.Constants;
+import ydk.learn.hadoop.mapreduce.Utils;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -23,13 +24,11 @@ public class NaiveBayesLikelihoodMapper extends Mapper<LongWritable, Text, Text,
 
         String line = value.toString();
         int pos = line.indexOf("\t");
-        // FIXME(yangdekun): close range?
-        // int label = Integer.valueOf(line.substring(0, pos));
         String label = line.substring(0, pos);
-        StringTokenizer tokenizer = new StringTokenizer(line.substring(pos+1)); // is it right?
+        StringTokenizer tokenizer = new StringTokenizer(line.substring(pos+1));
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            String outputKey = label + Constants.KEY_CONNECT_CHAR + token;
+            String outputKey = Utils.getLikelihoodKey(label, token);
             resuableText.set(outputKey);
             context.write(resuableText, oneInt);
         }

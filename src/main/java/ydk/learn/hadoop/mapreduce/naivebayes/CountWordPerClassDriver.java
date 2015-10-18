@@ -1,8 +1,8 @@
 package ydk.learn.hadoop.mapreduce.naivebayes;
 
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.shell.Count;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -12,28 +12,29 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 import ydk.learn.hadoop.mapreduce.Constants;
 
-
 /**
- * Created by yangdekun on 2015/10/17.
+ * Created by yangdekun on 2015/10/18.
  */
-public class NaiveBayesPrior {
+public class CountWordPerClassDriver {
 
     public static void main(String[] args) throws Exception {
         Configuration configuration = new Configuration();
         String[] otherArgs = new GenericOptionsParser(configuration, args).getRemainingArgs();
 
+        if (otherArgs.length != 3) {
+            System.out.println("Usage:CountWordPerClassDriver <in> <out>");
+            System.exit(2);
+        }
+
         String inputPath = otherArgs[1];
         String outputPath = otherArgs[2];
-        String countExampleFileName = otherArgs[3];
 
-        // options
-        configuration.set(Constants.COUNT_EXAMPLE_FILE_NAME, countExampleFileName);
-
-        Job job = Job.getInstance(configuration, Constants.NAIVE_BAYES_PRIOR_JOB_NAME);
-        job.setJarByClass(NaiveBayesPrior.class);
-        job.setMapperClass(NaiveBayesPriorMapper.class);
-        job.setCombinerClass(NaiveBayesPriorCombiner.class);
-        job.setReducerClass(NaiveBayesPriorReducer.class);
+        String jobName = Constants.COUNT_WORD_BY_CLASS_JOB_NAME;
+        Job job = Job.getInstance(configuration, jobName);
+        job.setJarByClass(CountWordPerClassDriver.class);
+        job.setMapperClass(CountWordPerClassMapper.class);
+//        job.setCombinerClass(CountExampleCombiner.class);
+        job.setReducerClass(CountWordPerClassReducer.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
         job.setOutputKeyClass(Text.class);

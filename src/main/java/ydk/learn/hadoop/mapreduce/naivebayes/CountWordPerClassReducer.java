@@ -7,9 +7,9 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 
 /**
- * Created by yangdekun on 2015/10/16.
+ * Created by yangdekun on 2015/10/18.
  */
-public class NaiveBayesLikelihoodReducer extends Reducer<Text, IntWritable, Text, Text> {
+public class CountWordPerClassReducer extends Reducer<Text, IntWritable, Text, Text> {
 
     private static final Text reusableText = new Text();
 

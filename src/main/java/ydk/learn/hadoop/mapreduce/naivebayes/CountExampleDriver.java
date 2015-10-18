@@ -15,7 +15,7 @@ import ydk.learn.hadoop.mapreduce.Constants;
 /**
  * Created by yangdekun on 2015/10/17.
  */
-public class CountExample {
+public class CountExampleDriver {
 
     public static void main(String[] args) throws Exception {
         Configuration configuration = new Configuration();
@@ -31,7 +31,7 @@ public class CountExample {
 
         String jobName = Constants.COUNT_EXAMPLE_JOB_NAME;
         Job job = Job.getInstance(configuration, jobName);
-        job.setJarByClass(CountExample.class);
+        job.setJarByClass(CountExampleDriver.class);
         job.setMapperClass(CountExampleMapper.class);
         job.setCombinerClass(CountExampleCombiner.class);
         job.setReducerClass(CountExampleReducer.class);
